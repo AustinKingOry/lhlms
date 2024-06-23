@@ -1,0 +1,22 @@
+{% extends 'apps/main.html'%}
+{% load static %}
+{% block content %}
+<div class = "row">
+    <div class = "col-md-5">
+        <div class = "card card-body" style = "border-radius: 10px;">
+            <p>Are you sure you want to delete "{{item.book_name}}" Order which has been {{item.status}}?</p>
+
+<form action = "{% url 'delete_order' item.id %}" method = "POST">
+
+    {% csrf_token %}
+    
+    <a class = "btn btn-primary btn-lg" href = "{% url 'book_order' %}">Cancel</a>
+
+    <input class = "btn btn-primary btn-lg" type = "submit" name = "Confirm" style="width: 5cm;">
+</form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

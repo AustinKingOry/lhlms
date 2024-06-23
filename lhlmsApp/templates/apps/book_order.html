@@ -1,0 +1,83 @@
+{% extends 'apps/main.html'%}
+
+{% block content %}
+
+<div class = "row">
+    <div class = 'col'>
+    <div class = "card card-body">
+
+            <form  method = "get">
+               {{myfilter.form}}
+                <button class = "btn btn-primary" type = "submit">Search order</button>
+            </form>
+             
+        </div>
+    </div>
+</div>
+<div class = "col-md-12">
+    <h5>ORDERS</h5>
+    <hr>
+    <div class = "card card-body">
+        <a class = "btn btn-primary btn-sm btn-block" href = "{% url 'create_order' %}">Create  Book Order
+        </a>
+        <table class = "table table-sm">
+            <tr>
+            
+            <th>Date  of order</th>
+            <th>Status</th>
+           
+            <th>Book Name</th>
+            <th>Quantity</th>
+            <th>Publisher Name</th>
+            <th>Update</th>
+            <th>Remove</th>
+            </tr>
+            {% for i in orders %}
+                <tr>
+                <td>{{i.date_of_order}}</td>
+                <td>{{i.status}}</td>
+                <td>{{i.book_name}}</td>
+                <td>{{i.quantity}}</td>
+                <td>{{i.publisher_name}}</td>
+                <td><a class = "btn btn-sm btn-info" href = "{% url 'update_order' i.id %}">Update</a></td>
+                <td><a class = "btn btn-sm btn-danger" href = "{% url 'delete_order' i.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+<br>
+<div style = display:flex;>
+<div class = "row">
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp      
+  <div class = "card-header">
+     <h3 class = "card-title">Total Orders</h3>
+        <hr>
+       <div class ="card-body" style="color: blue">
+      <h3 class = "card-title">{{total_orders}}</h3>    
+        </div>
+    </div>
+</div>
+            
+<div class = "row">
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+   <div class = "card-header">
+      <h3 class = "card-title">Orders delivered</h3>
+        <hr>
+       <div class ="card-body" style="color: blue">
+      <h3 class = "card-title">{{delivered}}</h3>    
+        </div>
+    </div>
+</div>
+
+<div class = "row">
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+  <div class = "card-header">
+     <h3 class = "card-title">Orders pending</h3>
+        <hr>
+       <div class ="card-body" style="color: blue">
+     <h3 class = "card-title">{{pending}}</h3>   
+       </div>
+  </div>
+</div>
+</div>
+    {% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'apps/main.html'%}
+{% load static %}
+{% block content %}
+<div class = "col-md-12">
+    <br>
+    <div class = "card card-body", style="border-radius: 10px;">
+            <form action = "" method = POST style="border-radius: 10px;">
+                <hr>
+                {% csrf_token %}
+                <div style="border-radius: 10px;">{{form}}</div>
+            
+                <input type = "submit" name = "Submit" style="border-radius: 10px; width: 10cm;">
+            </form>
+             
+        </div>
+    </div>
+</div>
+
+{% endblock %}

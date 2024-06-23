@@ -1,0 +1,80 @@
+{% extends 'apps/main.html'%}
+
+{% block content %}
+<br>
+
+<br>
+
+&nbsp &nbsp  
+<div >
+    <a class = "btn btn-primary btn-lg" href = "{% url 'add_staff' %}">Add Staff Member
+    </a>
+ </div>
+
+<br>
+<div class = "row">
+    <div class = 'col'>
+    <div class = "card card-body">
+
+            <form  method = "get">
+               {{myfilter.form}}
+                <button class = "btn btn-primary" type = "submit">Search</button>
+            </form>
+             
+        </div>
+    </div>
+</div>
+<br>
+<div class = "row">
+        <div class = "card card-body">
+            <table class = "table">
+                <tr>
+                    <th>Name</th>
+                    <th>Id number</th>
+                    <th>Registration Number</th>
+                    <th>Age</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Sex</th>
+                    <th>Phone number</th>
+                </tr>
+                
+                {% for i in staff %}
+                <tr>
+                    <td>{{i.name}}</td>
+                    <td>{{i.ID_no}}</td>
+                    <td>{{i.reg_no}}</td>
+                    <td>{{i.age}}</td>
+                    <td>{{i.role}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.phone_no}}</td>
+                    <td>{{i.sex}}</td>
+                    <td><a class = "btn btn-sm btn-info" href = "{% url 'update_staff' i.id %}">Update</a></td>
+                    <td><a class = "btn btn-sm btn-danger" href = "{% url 'delete_staff' i.id %}">Remove</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<div style = display:flex;>
+    <div class ="col">
+      <div class = "col-md">
+          <div class = "row 6">
+          <div class = "card text-center text-white mb-3" id = "total-orders">
+              <div class = "card-header">
+                      <h3 class = "card-title">Total Staff</h3>
+                      <hr>
+                      <div class ="card-body">
+                          <h3 class = "card-title">{{total_staff}}</h3>    
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+    
+
+{% endblock %}
+            

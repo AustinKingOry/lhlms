@@ -1,0 +1,41 @@
+{% extends 'apps/main.html'%}
+
+{% load static %}
+{% block content %}
+<style>
+#messages{
+    background-color: grey;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+</style>
+
+
+
+<br/>
+<div class = "row-2">
+    <div class = "col-md-6">
+        <div class = "card card-body" style = "border-radius: 10px; text-align: center;">
+            {% for message in messages %}
+                <p id="messages">{{message}}</p>
+            {% endfor %}
+<br>
+<h2>Get In Touch </h2>
+<form action="/contact/" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} {{ field }}
+        </div>
+    {% endfor %}
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#exampleModal">
+        <h3>SEND MESSAGE</h3>
+       
+      </button>
+      {% include 'apps/thanks.html' %}
+ </form>
+</div>
+
+{% endblock %}

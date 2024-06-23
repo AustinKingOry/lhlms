@@ -1,0 +1,20 @@
+{% extends 'apps/main.html'%}
+{% load static %}
+{% block content %}
+<div class = "col-md-12">
+    <br>
+    <div class = "card card-body" style = "border-radius: 10px;">
+            <form action = "" method = POST>
+                <hr>
+                {% csrf_token %}
+                {{form.as_p}}
+            
+                <input class = "btn btn-primary btn-lg" type = "submit" value = "Confirm" style="width: 5cm;">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

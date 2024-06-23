@@ -1,0 +1,52 @@
+
+body{
+    background-color: rgb(221, 198, 243);
+}
+
+
+#total-orders{
+    background-color: blueviolet;
+    width: 15cm;
+    border: none;
+    align-items: center;
+    
+}
+
+
+#orders-delivered{
+    background-color: blueviolet;
+    width: 30%;
+    border: none;
+    
+}
+
+#orders-pending{
+    background-color: blueviolet;
+    width: 30%;
+    border: none;
+}
+
+input[type=text], #stud-name{
+     width: 100%;
+    padding: 12px 20px;
+     margin: 8px 0;
+    display: inline-block;
+     border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+ }
+
+ input[type=submit], #add-stud{
+    width: 25cm;
+    background-color: #4CAF50;
+    color: white;
+    margin: 8px 0;
+    padding: 14px,20px;
+    border:none;
+    text-align: center;
+    
+
+
+
+ }
+

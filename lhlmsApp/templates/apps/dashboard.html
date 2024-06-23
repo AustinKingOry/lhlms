@@ -1,0 +1,136 @@
+{% extends 'apps/main.html'%}
+
+{% block content %}
+
+{% include 'apps/status.html' %}
+
+<br>
+<div style = display:flex;>
+    &nbsp &nbsp  
+    <div >
+        <a class = "btn btn-primary btn-lg" href = "{% url 'add_student' %}">Add new Student
+        </a>
+     </div>
+&nbsp&nbsp
+<div >
+    <a class = "btn btn-primary btn-lg" href = "{% url 'add_book' %}">Add new Book
+    </a>
+ </div>
+&nbsp&nbsp
+<div >
+    <a class = "btn btn-primary btn-lg" href = "{% url 'add_staff' %}">Add new Book
+    </a>
+</div>
+ &nbsp&nbsp
+<div >
+     <a class = "btn btn-primary btn-lg" href = "{% url 'create_order' %}">Create Order
+     </a>
+</div>
+&nbsp&nbsp
+ <div>
+   <a class = "btn btn-primary btn-lg" href = "{% url 'book_order' %}">View Orders
+   </a>
+</div>
+&nbsp&nbsp
+
+</div>   
+
+
+
+ <br>
+
+</div>
+<br>
+<div class = "row">
+    <div class = 'col'>
+    <div class = "card card-body">
+
+            <form  method = "get">
+               {{myfilter.form}}
+                <button class = "btn btn-primary" type = "submit">Search</button>
+            </form>
+             
+        </div>
+    </div>
+</div>
+<br>
+<div class = "col-md-8">
+    <h5>BORROWS</h5>
+    <hr>
+    <div class = "card card-body">
+        
+        <a class = "btn btn-primary btn-sm btn-block" href = "{% url 'create_borrow' %}">Create Borrow
+        </a>
+        <table class = "table table-sm">
+            <tr>
+            
+            <th>Student Name</th>
+            
+            <th>Book Borrowed</th>
+            
+            <th>Date of Borrow</th>
+            <th>Days retained</th>
+            <th>fine</th>
+            
+
+            <th>Update</th>
+            <th>Remove</th>
+            </tr>
+
+            {% for i in bk_borrow %}
+                <tr>
+                
+                <td>{{i.stud_name}}</td>
+                
+                <td>{{i.books_borrowed}}</td>
+                
+                <td>{{i.date_of_borrow}}</td>
+                <td>{{i.Day_till}}</td>
+                <td>{{i.Is_Past}}</td>
+                
+                <td><a class = "btn btn-sm btn-info" href = "{% url 'update_borrow' i.id %}">Update</a></td>
+                <td><a class = "btn btn-sm btn-danger" href = "{% url 'delete_borrow' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+</div>
+<br>
+
+       
+
+
+<div style = display:flex;>
+<div class = "row">
+    &nbsp&nbsp&nbsp
+
+                <div class = "card-header">
+                        <h3 class = "card-title">Total Books</h3>
+                        <hr>
+                        <div class ="card-body" style="color: blue">
+                            <h3 class = "card-title">{{total_books}}</h3>    
+                        </div>
+                    </div>
+                </div>
+            
+
+<div class = "row">
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+                <div class = "card-header">
+                        <h3 class = "card-title">Total Students</h3>
+                        <hr>
+                        <div class ="card-body" style="color: blue">
+                            <h3 class = "card-title">{{total_students}}</h3>    
+                        </div>
+                    </div>
+                </div>
+          
+</div>
+
+
+
+{% endblock %}
+            

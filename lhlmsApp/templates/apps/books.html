@@ -1,0 +1,117 @@
+
+{% extends 'apps/main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<br>
+
+
+&nbsp &nbsp  
+<div style = display:flex;>
+<div>
+    <a class = "btn btn-primary btn-lg" href = "{% url 'add_book' %}">Add new Book
+    </a>
+
+<a class = "btn btn-primary btn-lg" href = "{% url 'create_order' %}">Create Order    
+</a>
+
+<a class = "btn btn-primary btn-lg" href = "{% url 'book_order' %}">View Orders   
+     </a>
+ 
+</div>
+</div>
+
+
+
+<div >
+  <h2>LUCA HIGH LIBRARY</h2>
+  <hr>
+  <div class = "row">
+    <div class = 'col'>
+    <div class = "card card-body">
+
+            <form  method = "get">
+               {{myfilter.form}}
+                <button class = "btn btn-primary" type = "submit">Search</button>
+            </form>
+             
+        </div>
+    </div>
+</div>
+<br>
+  <th><h4 style="text-align:center;">Available Books</h4></th>
+  <div class = "card card-body">
+      
+    <table class = "table table-lg">
+        <tr>
+        <th>Name</th>
+        <th>Serial Number</th>
+        <th>Genre</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Year of Publication</th>
+        <th>Pages</th>
+        <th>In stock</th>
+        
+        </tr>
+        
+        
+        {% for i in books %}
+        <tr>
+        <td>{{i.name}}</td>
+        <td>{{i.Serial_no}}</td>
+        <td>{{i.Genres}}</td>
+        <td>{{i.author}}</td>
+        <td>{{i.publisher}}</td>
+        
+        <td>{{i.year_of_publication}}</td>
+        <td>{{i.pages}}</td>
+        <td>{{i.in_stock}}</td>
+
+        <td><a class = "btn btn-sm btn-info" href = "{% url 'update_book' i.id %}">Update</a></td>
+        <tr>
+
+        {% endfor %}
+          
+     </table>
+     <div style = display:flex;>
+        <div class ="col">
+          <div class = "col-md">
+              <div class = "row" style="display: inline-flex;">
+     <img  src = "{% static 'images/gary.jpg' %}"  width="120" height="150">
+     &nbsp&nbsp
+     <img  src = "{% static 'images/kada.jpg' %}" width="120" height="150" >
+     &nbsp&nbsp
+     <img  src = "{% static 'images/kirimi.jpg' %}" width="120" height="150" >
+              </div>
+            </div>
+        </div>
+     </div>
+
+     <div>
+        <a class = "btn btn-primary btn-sm" href = "{% url 'add_publisher' %}">Add new Publisher
+        </a>
+        <a class = "btn btn-primary btn-sm" href = "{% url 'add_author' %}">Add new Author
+        </a>
+     </div>
+
+     <br>
+     <div style = display:flex;>
+        <div class ="col">
+          <div class = "col-md">
+              <div class = "row 6">
+              <div class = "card text-center text-white mb-3" id = "total-orders">
+                  <div class = "card-header">
+                          <h3 class = "card-title">Total Books</h3>
+                          <hr>
+                          <div class ="card-body">
+                              <h3 class = "card-title">{{total_books}}</h3>    
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+     {% endblock %}
